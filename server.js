@@ -11,6 +11,7 @@ app.use(express.static(__dirname));
 
 // Serve HTML file
 app.get('/', (req, res)=>{
+    console.log(req); // Use this to find the url
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
