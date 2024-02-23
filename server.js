@@ -23,18 +23,18 @@ app.get('/', (req, res)=>{
 
 
 
-
+let task = "This is coming from the database"
 
 // Get Request for tasks from front end
 app.get('/getTask', (req, res)=>{
-    res.status(200).json({name: 'Aryan Goel'});
+    res.status(200).json({taskName: task});
 
 })
 
 app.post('/postTask', (req, res)=>{
     res.status(200).json({message: 'Your task has been received'});
-    const {taskName, date, time} = req.body;
-    console.log(taskName, date, time);
+    const {taskName, taskDate, taskTime} = req.body;
+    console.log(taskName, taskDate, taskTime);
 })
 
 

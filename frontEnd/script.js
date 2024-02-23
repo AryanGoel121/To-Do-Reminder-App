@@ -29,7 +29,9 @@ function taskCreated(){
         arrTasks.push(task);
 
         pushIntoItems(task);
-        postTask(task);
+
+        // Task is being sent to the back-end which furthur puts it in the database(mongo);
+        // postTask(task);
     }
 }
 
@@ -40,6 +42,7 @@ function pushIntoItems(task){
     divElement.classList.add('items');
 
     const paraChildElement = document.createElement('p');
+    paraChildElement.classList.add("remTask");
     paraChildElement.innerText = task;
 
     let checkChildElement = document.createElement('i');
@@ -64,6 +67,7 @@ function displayTasks(allTasks){
     allTasks.forEach((task) => {
         itemsContainer.appendChild(task);
     });
+    settingReminder();
 }
 
 // Mark as Complete
@@ -86,6 +90,8 @@ function markAsComplete(checkChildElement){
             displayTasks(allTasks);
         }
     });
+
+    // deleteTaskDB();
 }
 
 // Delete all items first to print a fresh list of tasks;
@@ -113,9 +119,8 @@ const getTask = async ()=>{
     const res = await fetch(baseURL + 'getTask');
     // console.log(res);
     const data = await res.json();
-    console.log(data.name);
+    console.log(data.taskName);
 }
-// getTask();
 
 
 let task = 'Complete Connection!';
@@ -125,8 +130,8 @@ const postTask = async (task, date='', time='')=>{
         method: 'POST',
         body: JSON.stringify({
             taskName: task,
-            date: date,
-            time: time,
+            taskDate: date,
+            taskTime: time,
         }),
         headers: {
             'Content-type': 'application/json',
@@ -138,3 +143,36 @@ const postTask = async (task, date='', time='')=>{
     const data = await res.json();
     console.log(data.message);
 };
+
+// const deleteTaskDB = async() =>{
+//     // Logic to remove this task from the data base!!
+    
+// }
+
+
+function settingReminder(){
+    const remTask = document.querySelectorAll('.remTask');
+    const setRem = document.querySelector('.custCont');
+    
+    remTask.forEach( (task) => {
+        task.addEventListener('click', () => {
+            console.log("Para is clicked")
+            setRem.style.visibility = 'visible';
+            setReminderBtn(task);
+        })
+    })
+}
+
+function setReminderBtn(task){
+    const remBtn = document.querySelector('.remItemBtn');
+    const remDate = document.querySelector('.remDate');
+    const remTime = document.querySelector('.remTime');
+
+    remBtn.addEventListener('click', ()=>{
+        console.log('button is clicked');
+        console.log(task.innerText);
+        console.log(remDate.value);
+        console.log(remTime.value);
+        // postTask(task.innerText, remDate.value, remTime.value);
+    });
+}

@@ -46,6 +46,7 @@ body{
 }
 
 .frame1{
+    visibility: hidden;
     display: flex;
     justify-content: start;
     align-items: start;
@@ -72,7 +73,8 @@ body{
     flex-direction: row;
     height: 88vh;
     width: 20%;
-    background-color: rgb(13, 27, 42, 0.8);
+    
+    /* background-color: rgb(13, 27, 42, 0.8); */
 }
 
 .tasks{
@@ -170,11 +172,74 @@ p{
     text-align: center;
 }
 
-.headFrame3{
-    /* background-color: #003049; */
+/* .headFrame3{
     color: #fdf0d5;
     font-size: 2rem;
     padding: 0.2rem;
     width: 100%;
     text-align: center;
+} */
+
+
+.custCont{
+    visibility: hidden;
+    margin-top: 5rem;
+    background-color: rgba(40,54,24, 0.5);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    color: #ffb703;
+} 
+
+.remHead{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 2.5rem;
+    text-shadow: 1px 1px 2px red, 0 0 1em orange, 0 0 0.2em orange;
+}
+
+.remItem{
+    display: flex;
+    margin-top: 1rem;
+    flex-direction: column;
+    font-size: 1.7rem;
+    color: #fefae0;
+}
+
+.remItemCont{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.remItemBtn{
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+}
+
+.remItemBtn:hover{
+    color: #fefae0;
+    background-color: #283618;
+
+}
+
+input[type="date"] {
+    padding: 8px; /* Adjust padding as needed */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+} */
+
+input[type="time"] {
+    padding: 8px; /* Adjust padding as needed */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
