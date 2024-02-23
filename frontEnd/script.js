@@ -29,6 +29,7 @@ function taskCreated(){
         arrTasks.push(task);
 
         pushIntoItems(task);
+        postTask(task);
     }
 }
 
@@ -58,6 +59,8 @@ function pushIntoItems(task){
 
 // Displaying all the Tasks
 function displayTasks(allTasks){
+    // I need to get the tasks from server
+    // getTask();
     allTasks.forEach((task) => {
         itemsContainer.appendChild(task);
     });
@@ -100,3 +103,38 @@ function emptyList(){
         introMsg.style.visibility = "visible";
     }
 }
+
+
+// Send the tasks to back end
+const baseURL = 'http://localhost:8000/';
+
+// Get Request
+const getTask = async ()=>{
+    const res = await fetch(baseURL + 'getTask');
+    // console.log(res);
+    const data = await res.json();
+    console.log(data.name);
+}
+// getTask();
+
+
+let task = 'Complete Connection!';
+// POST Request
+const postTask = async (task, date='', time='')=>{
+    let options = {
+        method: 'POST',
+        body: JSON.stringify({
+            taskName: task,
+            date: date,
+            time: time,
+        }),
+        headers: {
+            'Content-type': 'application/json',
+        }
+    }
+    // We'll make a POST Request
+    const res = await fetch(baseURL + 'postTask', options)
+    console.log(res.status);
+    const data = await res.json();
+    console.log(data.message);
+};

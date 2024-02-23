@@ -8,12 +8,52 @@ const port = process.env.PORT || 8000;
 
 // Serve static files
 app.use(express.static(path.join(__dirname, 'frontEnd')));
+app.use(express.json())  // letting express know that it should expect json
 
 // Serve HTML file
 app.get('/', (req, res)=>{
-    console.log(req); // Use this to find the url
     res.sendFile(path.join(__dirname, 'frontEnd', 'index.html'));
 });
+
+
+
+
+
+
+
+
+
+
+
+// Get Request for tasks from front end
+app.get('/getTask', (req, res)=>{
+    res.status(200).json({name: 'Aryan Goel'});
+
+})
+
+app.post('/postTask', (req, res)=>{
+    res.status(200).json({message: 'Your task has been received'});
+    const {taskName, date, time} = req.body;
+    console.log(taskName, date, time);
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Database's URI/ Connection String
@@ -28,7 +68,7 @@ async function dbConnect(){
         console.error(error);
     }
 }
-dbConnect();
+// dbConnect();
 
 // Our Port Where the server is running
 app.listen(port, ()=>{
