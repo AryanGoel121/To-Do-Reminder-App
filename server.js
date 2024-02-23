@@ -7,12 +7,12 @@ const path = require('path');
 const port = process.env.PORT || 8000;
 
 // Serve static files
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'frontEnd')));
 
 // Serve HTML file
 app.get('/', (req, res)=>{
     console.log(req); // Use this to find the url
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, 'frontEnd', 'index.html'));
 });
 
 
@@ -23,7 +23,7 @@ const uri = "mongodb+srv://aryangoel:ilovemyfamily@to-dolist.kp83yjb.mongodb.net
 async function dbConnect(){
     try{
         await mongoose.connect(uri);
-        console.log("Connected to MongoDB");
+        console.log("Database is Connected: MongoDB");
     } catch (error) {
         console.error(error);
     }
@@ -32,5 +32,5 @@ dbConnect();
 
 // Our Port Where the server is running
 app.listen(port, ()=>{
-    console.log(`server started on port ${port}`);
+    console.log(`Server is running on http://localhost:${port}`);
 })
