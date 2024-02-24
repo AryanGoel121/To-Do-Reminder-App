@@ -1,7 +1,8 @@
 const inputText = document.querySelector(".inputText");
 const introMsg = document.querySelector(".intro");
 const itemsContainer = document.querySelector(".tasks");
-const setRem = document.querySelector('.custCont');
+const reminderContainer = document.querySelector('.custCont');
+const setDateTime = document.querySelector('.setDateTimeForReminder');
 arrTasks = [];
 
 // What happends when you press enter in the input field
@@ -34,7 +35,7 @@ function printingTasks(task){
     listItem.classList.add('items');
 
     const paraChildElement = document.createElement('p');
-    paraChildElement.setAttribute('onclick', 'showSetReminder(this)');
+    paraChildElement.setAttribute('onclick', 'clickingPara(this)');
     paraChildElement.innerText = task;
 
     let checkChildElement = document.createElement('i');
@@ -49,20 +50,27 @@ function printingTasks(task){
     itemsContainer.appendChild(listItem);
 }
 
-
-// Makes the Setting Reminder window VISIBLE & HIDDEN respectively
-function showSetReminder(taskNeedsReminder){
-    setRem.classList.toggle("toggleVisibility");
-    taskNeedsReminder.parentNode.classList.toggle("checked");
-    console.log("Paragraph clicked");
-    // This will furthur send the reminder data to backend
-}
-
-
 // Marking task as complete / Deleting the task / Deleting the task from <ul class="tasks">
 function markComplete(removeThisTask){
     let audio = document.querySelector("#myAudio"); // Little Fun!!!
     audio.play();
     console.log("Check mark is clicked, task removed");
     removeThisTask.parentNode.remove();
+}
+
+
+
+// Makes the Setting Reminder window VISIBLE & HIDDEN respectively
+// Checking Click Toggle on Para Element
+let paraClicked = false;
+function clickingPara(taskNeedsReminder){
+    if(!paraClicked){
+        // addEventListener to reminder button
+        showSetReminder(taskNeedsReminder);
+    }
+    else{
+        // removeEventListener from reminder button
+        hideSetReminder(taskNeedsReminder);
+    }
+    paraClicked = !paraClicked;
 }
