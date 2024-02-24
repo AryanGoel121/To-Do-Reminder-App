@@ -194,6 +194,10 @@ p{
     color: #ffb703;
 } 
 
+.toggleVisibility{
+    visibility: visible;
+}
+
 .remHead{
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 2.5rem;
