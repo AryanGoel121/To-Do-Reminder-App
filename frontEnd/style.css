@@ -243,3 +243,19 @@ input[type="time"] {
     border-radius: 4px;
     box-sizing: border-box;
 }
+
+.remTask:hover{
+    cursor: pointer;
+}
+
+ul li{
+    list-style: none;
+}
+
+ul li{
+    cursor: pointer;
+}
+
+ul li.checked{
+    background-color:rgba(239, 246, 224, 1);
+}

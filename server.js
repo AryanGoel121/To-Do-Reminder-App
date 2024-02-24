@@ -16,13 +16,6 @@ app.get('/', (req, res)=>{
 });
 
 
-
-
-
-
-
-
-
 let task = "This is coming from the database"
 
 // Get Request for tasks from front end
@@ -36,23 +29,6 @@ app.post('/postTask', (req, res)=>{
     const {taskName, taskDate, taskTime} = req.body;
     console.log(taskName, taskDate, taskTime);
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
