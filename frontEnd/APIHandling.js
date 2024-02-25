@@ -1,7 +1,7 @@
 // Back End=============================================================================================
 
 // Send the tasks to back end
-const baseURL = 'http://localhost:8000/';
+const baseURL = 'http://localhost:8000/api/';
 
 // Get Request
 const getTask = async ()=>{
@@ -12,7 +12,6 @@ const getTask = async ()=>{
 }
 
 
-let task = 'Complete Connection!';
 // POST Request
 const postTask = async (task, date='', time='')=>{
     let options = {

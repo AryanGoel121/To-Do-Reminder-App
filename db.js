@@ -21,3 +21,6 @@
 // .catch(error => {
 //     console.error('Error connecting to MongoDB:', error);
 //   });
+
+
+module.exports = uri = "mongodb+srv://aryangoel:ilovemyfamily@to-dolist.kp83yjb.mongodb.net/Tasks";

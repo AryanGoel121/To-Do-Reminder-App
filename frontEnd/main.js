@@ -22,7 +22,7 @@ function taskCreated(){
         arrTasks.push(task);
 
         printingTasks(task);
-
+        postTask(task);
         // Task is being sent to the back-end which furthur puts it in the database(mongo);
         // postTask(task);
     }
