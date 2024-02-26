@@ -1,6 +1,6 @@
 // Connecting to database using MongoDB Driver
 const {MongoClient} = require('mongodb');
-const uri = "mongodb+srv://aryangoel:ilovemyfamily@to-dolist.kp83yjb.mongodb.net/?retryWrites=true&w=majority&appName=To-DoList";
+const uri = "";
 const client = new MongoClient(uri);
 
 // Connecting...
