@@ -32,7 +32,38 @@ const postTask = async (task, date='', time='')=>{
     console.log(data.message);
 };
 
-// const deleteTaskDB = async() =>{
-//     // Logic to remove this task from the data base!!
-    
-// }
+// Update Request
+const updateTask = async (task, date='', time='') =>{
+    let options = {
+        method: 'PUT',
+        body: JSON.stringify({
+            taskName: task,
+            taskDate: date,
+            taskTime: time,
+        }),
+        headers: {
+            'Content-type': 'application/json',
+        }
+    }
+    let result = await fetch(baseURL + 'updateTask', options);
+    console.log(result.status);
+    let resMsg = await result.json();
+    console.log(resMsg.message);
+}
+
+// DELETE Request
+const deleteTask = async (task) => {
+    let options = {
+        method: 'DELETE',
+        body: JSON.stringify({
+            taskName: task,
+        }),
+        headers: {
+            'Content-type': 'application/json',
+        }
+    }
+    const res = await fetch(baseURL + 'deleteTask', options);
+    console.log(res.status);
+    const resMsg = await res.json();
+    console.log(resMsg.message);
+}

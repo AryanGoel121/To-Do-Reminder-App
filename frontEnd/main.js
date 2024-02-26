@@ -22,9 +22,9 @@ function taskCreated(){
         arrTasks.push(task);
 
         printingTasks(task);
-        postTask(task);
+
         // Task is being sent to the back-end which furthur puts it in the database(mongo);
-        // postTask(task);
+        postTask(task);
     }
 }
 
@@ -55,7 +55,18 @@ function markComplete(removeThisTask){
     let audio = document.querySelector("#myAudio"); // Little Fun!!!
     audio.play();
     console.log("Check mark is clicked, task removed");
-    removeThisTask.parentNode.remove();
+
+    // Access parent Node
+    const parentOfThisTask = removeThisTask.parentNode;
+
+    // Delete this task from the database
+    const taskToBeDeleted = parentOfThisTask.firstChild.innerText;
+    console.log(taskToBeDeleted)
+    deleteTask(taskToBeDeleted);
+
+    // Actually deleting for User
+    parentOfThisTask.remove();
+
 }
 
 
