@@ -8,12 +8,12 @@ const path = require('path');
 const port = process.env.PORT || 8000;
 
 // Serve static files
-app.use(express.static(path.join(__dirname, 'frontEnd')));
+app.use(express.static(path.join(__dirname, '..', 'frontEnd')));
 app.use(express.json())  // letting express know that it should expect json
 
 // Serve HTML file, Main Landing Page
 app.get('/', (req, res)=>{
-    res.sendFile(path.join(__dirname, 'frontEnd', 'index.html'));
+    res.sendFile(path.join(__dirname, '..', 'frontEnd', 'index.html'));
 });
 
 

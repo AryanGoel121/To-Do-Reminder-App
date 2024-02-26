@@ -4,7 +4,7 @@
   "description": "Full-Stack To-Do",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js",
+    "dev": "nodemon ./backEnd/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
