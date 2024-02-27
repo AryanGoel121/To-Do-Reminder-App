@@ -12,9 +12,9 @@ const connectDB = async() => {
         console.error(err);
     }
 }
-
+connectDB();
 // Pointing to the right collection
-dbName = 'To-Do';
+dbName = 'to_do';
 collName = 'tasks';
 tasksCollection = client.db(dbName).collection(collName);
 
@@ -23,20 +23,21 @@ tasksCollection = client.db(dbName).collection(collName);
 // Data Manipulation
 const postMain = async(task)=>{
     try{
-        await connectDB();
+        // await connectDB();
         let result = await tasksCollection.insertOne(task);
         console.log(`Task has been added: ${result.insertedId}`);
     }catch(err){
         console.error(err);
-    }finally{
-        client.close();
     }
+    // finally{
+    //     client.close();
+    // }
 }
 
 
 const updateMain = async (task) =>{
     try{
-        await connectDB();
+        // await connectDB();
         // functoin for adding task reminder
         const update = {
             date: `${task.date}`,
@@ -46,22 +47,24 @@ const updateMain = async (task) =>{
         console.log(`Task Updated!`);
     } catch(err){
         console.error(err);
-    } finally{
-        client.close();
-    }
+    } 
+    // finally{
+    //     client.close();
+    // }
 }
 
 
 const deleteMain = async(taskToBeDeleted) =>{
     try{
-        await connectDB();
+        // await connectDB();
         let result = await tasksCollection.findOneAndDelete({taskContent: `${taskToBeDeleted}`});
         console.log(`Task Deleted from DB!`);
     }catch(err){
         console.error(err);
-    }finally{
-        client.close();
     }
+    // finally{
+    //     client.close();
+    // }
 }
 
 module.exports = {
