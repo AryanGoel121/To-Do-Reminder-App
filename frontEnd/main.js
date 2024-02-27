@@ -85,3 +85,11 @@ function clickingPara(taskNeedsReminder){
     }
     paraClicked = !paraClicked;
 }
+
+
+// We want to close the DB connection once the page closed
+// window.addEventListener('beforeunload', () => {
+
+// })
+
+// window.addEventListener('')
