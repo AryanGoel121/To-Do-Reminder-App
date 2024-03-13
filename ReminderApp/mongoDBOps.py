@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 # import pprint
 
-MONGODB_URI = 'mongodb+srv://aryangoel:ilovemyfamily@to-dolist.kp83yjb.mongodb.net/?retryWrites=true&w=majority&appName=To-DoList'
+MONGODB_URI = ''
 client = MongoClient(MONGODB_URI)
 
 # Pointing to the right collection

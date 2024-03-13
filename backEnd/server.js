@@ -18,8 +18,10 @@ app.get('/', (req, res)=>{
 
 
 // Handling Data Manipulation Requests form database-----------------------------------------------------------------------------
-app.get('/api/getTask', (req, res)=>{
-    res.status(200).json({taskName: task});
+app.get('/api/getTasks', async (req, res)=>{
+    console.log("Request in reaching the backend")
+    let tasks = await DB.getMain();
+    res.status(200).json(tasks);
 })
 
 

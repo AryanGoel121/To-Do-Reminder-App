@@ -63,10 +63,19 @@ function markComplete(removeThisTask){
     const taskToBeDeleted = parentOfThisTask.firstChild.innerText;
     console.log(taskToBeDeleted)
     deleteTask(taskToBeDeleted);
-
+    
     // Actually deleting for User
     parentOfThisTask.remove();
-
+    
+    // // Deleting from the array of tasks
+    // indexOfDelTask = arrTasks.indexOf(taskToBeDeleted);
+    // console.log(taskToBeDeleted)
+    // console.log(indexOfDelTask)
+    // if (indexOfDelTask !== -1) {
+    //     arrTasks.splice(indexOfDelTask, 1);
+    // } else {
+    //     console.log(`${taskToBeDeleted} not found in the array.`);
+    // }
 }
 
 
@@ -87,9 +96,15 @@ function clickingPara(taskNeedsReminder){
 }
 
 
-// We want to close the DB connection once the page closed
-// window.addEventListener('beforeunload', () => {
+// Event listener for when the page is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    getTasks();
+})
 
-// })
 
-// window.addEventListener('')
+// window.addEventListener('load', () =>{
+//     getTasks();
+// });
+// window.addEventListener('beforeunload', ()=>{
+//     getTasks();
+// });

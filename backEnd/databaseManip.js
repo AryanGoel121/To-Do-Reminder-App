@@ -19,6 +19,15 @@ collName = 'tasks';
 tasksCollection = client.db(dbName).collection(collName);
 
 
+// Get all the tasks upon intialization of the application
+const getMain = async () => {
+    try{
+        let result = await tasksCollection.find({}).toArray();
+        return result;
+    } catch(err){
+        console.error(err);
+    }
+}
 
 // Data Manipulation
 const postMain = async(task)=>{
@@ -71,4 +80,5 @@ module.exports = {
     deleteMain,
     updateMain,
     postMain,
+    getMain,
 }

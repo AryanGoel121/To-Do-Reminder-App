@@ -4,11 +4,16 @@
 const baseURL = 'http://localhost:8000/api/';
 
 // Get Request
-const getTask = async ()=>{
-    const res = await fetch(baseURL + 'getTask');
-    // console.log(res);
-    const data = await res.json();
-    console.log(data.taskName);
+const getTasks = async ()=>{
+    // Get all the tasks from DB
+    const res = await fetch(baseURL + 'getTasks');
+    const myTasks = await res.json();
+
+    // Display these tasks
+    myTasks.forEach(task => {
+        arrTasks.push(task);
+        printingTasks(task.taskContent);
+    });
 }
 
 
